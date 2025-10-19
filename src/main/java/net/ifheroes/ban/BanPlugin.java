@@ -83,6 +83,16 @@ public class BanPlugin {
             uuid, playerName, reason, modUuid, modName
         );
         banStore.create(entry);
+
+        // If the player is currently online, disconnect them with the ban message
+        server.getPlayer(uuid).ifPresent(player -> {
+            String msg = "&e&lIFHEROES.NET SERVER" +
+                         "\n&fYou are banned: &7" + reason +
+                         "\n\n&fDuration: &7Permanent" +
+                         "\n\n&fTo appeal, visit: &7https://ifheroes.net/discord" +
+                         "\n\n&fHow to appeal: &7https://docs.ifheroes.net/appeal";
+            player.disconnect(mm(msg));
+        });
     }
 
     public boolean isBanned(UUID uuid) {
