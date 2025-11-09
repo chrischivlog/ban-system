@@ -39,6 +39,6 @@ public class KickCommand implements SimpleCommand {
 
     @Override
     public boolean hasPermission(Invocation invocation) {
-        return invocation.source().hasPermission("kick.command");
+        return invocation.source().hasPermission("ifheroes.kick");
     }
 }
